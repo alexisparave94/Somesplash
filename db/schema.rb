@@ -17,10 +17,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_013433) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "photos_count"
+    t.integer "photos_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "comments_count"
+    t.integer "comments_count", default: 0
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_013433) do
   create_table "photos", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "comments_count"
+    t.integer "comments_count", default: 0
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

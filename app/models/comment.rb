@@ -1,3 +1,4 @@
 class Comment < ApplicationRecord
-  belongs_to :commentable, polymorphic: true
+  # Associations
+  belongs_to :commentable, polymorphic: true, counter_cache: true
 end

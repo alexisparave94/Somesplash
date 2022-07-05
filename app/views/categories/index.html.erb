@@ -4,5 +4,6 @@
     <h2><%= category.name %></h2>
     <span><%= category.photos_count%></span><br>
     <p><%= category.description %></p>
+    <%= link_to "Show", category_path(category) %>
   </div>
 <% end %>

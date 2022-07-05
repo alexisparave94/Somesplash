@@ -3,7 +3,7 @@ class CreateCategories < ActiveRecord::Migration[7.0]
     create_table :categories do |t|
       t.string :name
       t.text :description
-      t.integer :photos_count
+      t.integer :photos_count, default: 0
 
       t.timestamps
     end

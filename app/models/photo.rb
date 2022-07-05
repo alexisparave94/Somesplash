@@ -1,7 +1,7 @@
 class Photo < ApplicationRecord
   # Validations
   validates :title, presence: true, uniqueness: true
-  validates :description, length: { in: 5..100 }
+  validates :description, length: { in: 5..200 }
 
   # Associations
   belongs_to :category, counter_cache: true

@@ -1,3 +1,9 @@
 <h1><%= @category.name %></h1>
 <p><%= @category.description %></p>
 <%= link_to "Back", categories_path %>
+<% @photos.each do |photo| %>
+  <div>
+    <h2><%= photo.title %></h2>
+    <p><span><%= photo.comments.count %> comments</span></p>
+  </div>
+<% end %>

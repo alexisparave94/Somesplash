@@ -17,7 +17,7 @@
 
   <div>
     <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.order(:name) , :id, :name, { selected: category.id } %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { selected: category.id } %>
     <% photo.errors.full_messages_for(:category_id).each do |message| %>
       <div><%= message %></div>
     <% end %>

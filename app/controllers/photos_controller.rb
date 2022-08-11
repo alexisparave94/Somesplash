@@ -33,6 +33,13 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @category = @photo.category
+    @photo.destroy
+    redirect_to category_path(@category), status: :see_other
+  end
+
   private
 
   def photo_params

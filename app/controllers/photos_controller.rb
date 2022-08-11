@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
-  def show
-    @photo = Photo.find(params[:id])
-  end
+  before_action :set_photo, only: %i[show edit update destroy]
+
+  def show; end
 
   def new
     @photo = Photo.new
@@ -12,37 +12,38 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @category = Category.find(@photo.category_id)
     if @photo.save
-      redirect_to category_path(@photo.category)
+      redirect_to @photo.category
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @photo = Photo.find(params[:id])
-    @category = Category.find(params[:category_id])
+    @category = @photo.category
   end
 
   def update
-    @photo = Photo.find(params[:id])
     @category = Category.find(@photo.category_id)
     if @photo.update(photo_params)
-      redirect_to category_path(@photo.category)
+      redirect_to @photo.category
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
     @category = @photo.category
     @photo.destroy
-    redirect_to category_path(@category), status: :see_other
+    redirect_to @category, status: :see_other
   end
 
   private
 
   def photo_params
     params.require(:photo).permit(:title, :description, :category_id)
+  end
+
+  def set_photo
+    @photo = Photo.find(params[:id])
   end
 end

@@ -3,6 +3,11 @@
 <%= link_to "New photo", new_photo_path(category_id: @category.id) %>
 <% @photos.each do |photo| %>
   <div>
+    <div>
+      <% if photo.image.attached? %>
+        <%= image_tag photo.image, alt: "#{photo.title}" %>
+      <% end %>
+    </div>
     <h2><%= photo.title %></h2>
     <p><span><%= photo.comments.count %> comments</span></p>
     <%= link_to "Show", photo_path(photo) %>

@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def show
     @photos = @category.photos
     @comments = @category.comments
+    @comment = Comment.new
   end
 
   def new

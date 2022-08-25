@@ -3,6 +3,7 @@ class PhotosController < ApplicationController
 
   def show
     @comments = @photo.comments
+    @comment = Comment.new
   end
 
   def new

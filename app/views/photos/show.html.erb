@@ -4,6 +4,10 @@
   <p><span>Updated at <%= @photo.updated_at.strftime("%B %d, %Y") %></span></p>
 </div>
 <div>
+  <%= render "comments/form", comment: @comment, commentable: @photo %>
+</div>
+<div>
+  <h3>Commnets</h3>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
   <% end %>

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root "categories#index"
 
   # get 'categories', to: "categories#index"
-  resources "categories"
-  resources "photos"
+  resources "categories" do
+    resources "comments", only: :create
+  end
+  resources "photos" do
+    resources "comments", only: :create
+  end
 end

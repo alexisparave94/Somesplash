@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: %i[show edit update destroy]
 
-  def show; end
+  def show
+    @comments = @photo.comments
+  end
 
   def new
     @photo = Photo.new

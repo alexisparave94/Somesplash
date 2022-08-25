@@ -1,0 +1,7 @@
+<%= form_with model:[commentable, comment] do |f| %>
+  <%= f.text_area :content, placeholder: "Some respecful comment here." %><br>
+  <% comment.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <%= f.submit %>
+<% end %>

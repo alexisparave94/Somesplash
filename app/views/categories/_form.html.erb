@@ -14,6 +14,14 @@
       <div><%= message %></div>
     <% end %>
   </div>
+  
+  <div>
+    <%= f.label :cover %><br>
+    <%= f.file_field :cover %>
+    <% category.errors.full_messages_for(:cover).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
   <div>
     <%= f.submit %>

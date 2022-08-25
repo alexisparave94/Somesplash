@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources "photos" do
     resources "comments", only: :create
   end
+
+  resources "comments", only: :destroy
 end

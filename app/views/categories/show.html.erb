@@ -2,21 +2,7 @@
 <p><%= @category.description %></p>
 <%= link_to "New photo", new_photo_path(category_id: @category.id) %>
 <% @photos.each do |photo| %>
-  <div>
-    <div>
-      <% if photo.image.attached? %>
-        <%= image_tag photo.image, alt: "#{photo.title}" %>
-      <% end %>
-    </div>
-    <h2><%= photo.title %></h2>
-    <p><span><%= photo.comments.count %> comments</span></p>
-    <%= link_to "Show", photo_path(photo) %>
-    <%= link_to "Edit", edit_photo_path(photo) %>
-    <%= link_to "Delete", photo_path(photo), data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
-  </div>
+  <%= render "photos/photo", photo: photo %> <br>
 <% end %>
 <div>
   <%= render "comments/form", comment: @comment, commentable: @category %>

@@ -1,0 +1,13 @@
+<h1>Search</h1>
+<%= form_with url: "/search_photos", method: :get do |f| %>
+  <%= f.text_field :search, placeholder: "Search term", required: true %> <br>
+  <%= f.submit "Search Photos" %>
+<% end %>
+<% unless @photos.nil? %>
+  <p>
+    <%= "#{@photos.size} #{"photo".pluralize(@photos.size)} found" %>
+  </p>
+  <% @photos.each do |photo| %>
+    <%= render "photos/photo", photo: photo %>
+  <% end %>
+<% end %>
